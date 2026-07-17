@@ -1,0 +1,29 @@
+论文信息 - 下载失败记录
+=======================
+
+标题（用户提供）：Bit-Width Adaptive Computing for Different Precision Neural Networks
+会议：DAC 2019（第56届设计自动化大会）
+年份：2019
+
+注意：
+- 经过多轮网络搜索，未能找到 DAC 2019 中名为 "Bit-Width Adaptive Computing for Different Precision Neural Networks" 的论文
+- "bit-width adaptive computing" 是 Thinker 处理器（清华大学尹首一/魏少军团队）的核心技术特性
+- 该特性主要描述于 IEEE JSSC 2018 论文（DOI: 10.1109/JSSC.2017.2778281）
+- 可能混淆的 DAC 2019 相关论文：
+  * "Thinker: A Co-Design Approach to High-Efficiency Deep Learning Inference" (DAC 2019) — 但此标题也未得到确认
+  * "A Configurable Multi-Precision CNN Computing Framework Based on Single Bit RRAM" (DAC 2019, DOI: 10.1145/3316781.3317739)
+
+尝试过的链接/搜索：
+1. Google Scholar: "Bit-Width Adaptive Computing for Different Precision Neural Networks" DAC 2019 — 无匹配结果
+2. Web search: "Bit-Width Adaptive" "DAC 2019" "different precision" — 未找到精确匹配
+3. ACM Digital Library DAC 2019 proceedings — 因 Cloudflare 保护无法访问
+
+失败原因：
+- 论文标题可能不准确，无法定位具体 DOI
+- 未找到此精确标题对应的 DAC 2019 论文
+
+建议：
+- 验证论文标题是否正确
+- 可能是以下论文之一，请人工确认：
+  (a) "Thinker: A Versatile Neural Network Processor" 的 DAC 版本
+  (b) "A Configurable Multi-Precision CNN Computing Framework Based on Single Bit RRAM"（DOI: 10.1145/3316781.3317739）

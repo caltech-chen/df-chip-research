@@ -1,0 +1,88 @@
+{
+  "patent_number": "CN120874730B",
+  "application_number": "CN202511366235.7",
+  "title": {
+    "zh": "一种芯片集成方法、装置、设备及存储介质",
+    "en": "A chip integration method, apparatus, device, and storage medium"
+  },
+  "filing_date": "2025-09-23",
+  "publication_date_a": "2025-10-31",
+  "grant_date": "2026-01-27",
+  "anticipated_expiration": "2045-09-23",
+  "patent_type": "发明专利（已授权）/ Granted Invention Patent",
+  "legal_status": "有效 (Active)",
+  "country": "CN",
+  "assignee": {
+    "zh": "上海东方算芯科技有限公司（上海东方计算技术有限公司）",
+    "en": "Shanghai Oriental Computing Technology Co., Ltd."
+  },
+  "inventors": [
+    { "zh": "孙涛", "en": "Sun Tao" }
+  ],
+  "related_applications": ["CN120508688A"],
+  "technical_field": "芯片集成设计 / Chip Integration Design (EDA/SoC Integration)",
+  "keywords": [
+    "芯片集成", "SoC设计", "模块层级管理", "树形结构", "公共父节点",
+    "信号穿透", "EDA工具", "硬件描述", "模块移动",
+    "chip integration", "SoC design", "module hierarchy", "tree structure",
+    "common parent node", "signal pass-through", "EDA", "hardware description",
+    "module relocation", "reconfigurable"
+  ],
+  "abstract_summary": "通过树形层级数据结构动态管理芯片模块的父子关系，支持任意模块在层级间的移动（向上找公共祖先，再向下落到目标位置），同时支持信号穿透路由的动态修改，无需重新从头集成整个SoC设计。",
+  "core_innovations": [
+    "基于二叉树/链表数据结构记录模块层级关系，支持O(depth)复杂度的模块重定位",
+    "通过寻找最近公共祖先（LCA）算法，实现跨子树的模块移动，避免全局重集成",
+    "支持信号穿透（pass-through）模块的动态插入和信号路径的原子性修改",
+    "集成代码（如Verilog/SystemVerilog）的自动更新，减少人工干预"
+  ],
+  "claims_count": 10,
+  "independent_claims": ["方法权利要求(Claim 1)", "装置权利要求(Claim 8)", "设备权利要求(Claim 9)", "存储介质权利要求(Claim 10)"],
+  "legal_events": [
+    { "date": "2025-10-31", "code": "PB01", "event": "公开申请" },
+    { "date": "2025-11-18", "code": "SE01", "event": "实质审查请求生效" },
+    { "date": "2026-01-27", "code": "GR01", "event": "专利授权" }
+  ],
+  "citations": [
+    {
+      "patent": "CN120508688A",
+      "priority_date": "2025-04-28",
+      "pub_date": "2025-08-19",
+      "assignee": "中国华电科工集团有限公司",
+      "title": "动态孪生分类方法、装置、设备及存储介质"
+    },
+    {
+      "patent": "CN116956787A",
+      "priority_date": "2023-06-13",
+      "pub_date": "2023-10-27",
+      "assignee": "上海思尔芯技术股份有限公司",
+      "title": "转换XMR信号传输模式的方法和装置"
+    },
+    {
+      "patent": "CN117473777A",
+      "priority_date": "2023-11-16",
+      "pub_date": "2024-01-30",
+      "assignee": "安世亚太科技股份有限公司",
+      "title": "多级仿真调度方法、装置、设备及介质"
+    },
+    {
+      "patent": "CN120610648A",
+      "priority_date": "2025-06-03",
+      "pub_date": "2025-09-09",
+      "assignee": "广州朗国电子科技股份有限公司",
+      "title": "电子白板中脑图编辑的方法、装置、设备及存储介质"
+    }
+  ],
+  "source_urls": {
+    "google_patents": "https://patents.google.com/patent/CN120874730B/en",
+    "patentguru": "https://www.patentguru.com/CN120874730B",
+    "espacenet": "https://worldwide.espacenet.com/publicationDetails/biblio?CC=CN&NR=120874730B&KC=B&FT=D",
+    "global_dossier": "https://globaldossier.uspto.gov/result/application/CN/202511366235/1"
+  },
+  "local_files": {
+    "full_text": "CN120874730B_reconfigurable_computing_unit.txt",
+    "pdf": null
+  },
+  "retrieval_date": "2026-07-17",
+  "retrieval_method": "Google Patents web scraping (PDF not publicly available for download)",
+  "notes": "已授权专利（B版），包含完整的权利要求、法律事件记录及引用专利信息。注意：目录名 A_3d_interconnect 与专利实际技术内容（芯片集成/SoC模块层级管理）不完全对应，实际技术更接近 EDA/SoC 集成工具领域。"
+}

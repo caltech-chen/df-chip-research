@@ -1,0 +1,53 @@
+{
+  "patent_number": "CN121900978A",
+  "application_number": "CN202610360625.1",
+  "title": {
+    "zh": "策略优化方法、策略优化装置、策略优化设备、策略优化存储介质及策略优化程序产品",
+    "en": "Policy optimization method, policy optimization device, policy optimization apparatus, policy optimization storage medium and policy optimization program product"
+  },
+  "filing_date": "2026-03-23",
+  "publication_date": "2026-04-21",
+  "grant_date": null,
+  "patent_type": "发明专利申请 (Invention Patent Application)",
+  "legal_status": "申请中 (Pending)",
+  "country": "CN",
+  "assignee": {
+    "zh": "上海东方算芯科技有限公司",
+    "en": "Shanghai Oriental Computing Technology Co., Ltd."
+  },
+  "inventors": [
+    { "zh": "代凌君", "en": "Dai Lingjun" },
+    { "zh": "周秦",   "en": "Zhou Qin" },
+    { "zh": "陈钢",   "en": "Chen Gang" }
+  ],
+  "technical_field": "分布式AI训练策略优化 / Distributed AI Training Strategy Optimization",
+  "keywords": [
+    "分布式训练", "张量并行", "流水线并行", "数据并行",
+    "性能预测", "跨硬件迁移", "策略优化", "大模型训练",
+    "distributed training", "tensor parallelism", "pipeline parallelism",
+    "data parallelism", "performance prediction", "cross-hardware migration",
+    "strategy optimization", "LLM training"
+  ],
+  "abstract_summary": "提供一种基于已知硬件实测性能数据、通过物理建模或神经网络方法预测目标硬件的训练性能，进而对候选分布式训练策略进行优先级评估并筛选最优策略的方法。",
+  "core_innovations": [
+    "利用小规模/低成本已知硬件的实测数据预测大规模目标硬件的训练性能，无需真机部署",
+    "支持物理建模（有效性能参数+利用率）和神经网络（特征提取+MLP）两种预测方法",
+    "基于TGS（每卡每秒Token数）和气泡比率对候选策略进行定量优先级排序",
+    "以显存（VRAM）占用作为同等优先级策略的决胜指标"
+  ],
+  "claims_count": 10,
+  "independent_claims": ["方法权利要求", "装置权利要求", "存储介质权利要求", "程序产品权利要求"],
+  "cpc_classification": [],
+  "citations": [],
+  "source_urls": {
+    "google_patents": "https://patents.google.com/patent/CN121900978A/en",
+    "patentguru": "https://www.patentguru.com/CN121900978A"
+  },
+  "local_files": {
+    "full_text": "CN121900978A_distributed_training_prediction.txt",
+    "pdf": null
+  },
+  "retrieval_date": "2026-07-17",
+  "retrieval_method": "Google Patents web scraping (PDF not publicly available for download)",
+  "notes": "PatentGuru 页面需要登录，无法抓取。PDF 未找到公开下载链接。全文内容已保存为 .txt 格式。"
+}

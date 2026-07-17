@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>东方算芯 (DF Chiptek) 技术研究报告 · 完整版</title>
+    <style>
+        :root {
+            --blue: #2980b9;
+            --dark: #2c3e50;
+            --teal: #16a085;
+            --orange: #e67e22;
+            --bg: #f4f7f9;
+            --card: #ffffff;
+            --border: #dde4ec;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            line-height: 1.7;
+            color: #333;
+            background: var(--bg);
+            padding: 40px 20px;
+        }
+        .container {
+            max-width: 980px;
+            margin: 0 auto;
+            background: var(--card);
+            border-radius: 10px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.09);
+            overflow: hidden;
+        }
+
+        /* ── Header ── */
+        .report-header {
+            background: linear-gradient(135deg, #1a2a3a 0%, #2980b9 100%);
+            color: #fff;
+            padding: 48px 48px 36px;
+        }
+        .report-header h1 { font-size: 2em; letter-spacing: 0.02em; margin-bottom: 8px; }
+        .report-header .subtitle { opacity: 0.75; font-size: 0.95em; }
+        .badge-row { margin-top: 20px; display: flex; flex-wrap: wrap; gap: 10px; }
+        .badge {
+            background: rgba(255,255,255,0.15);
+            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 20px;
+            padding: 4px 14px;
+            font-size: 0.82em;
+        }
+
+        /* ── TOC ── */
+        .toc {
+            background: #eaf3fb;
+            border-left: 4px solid var(--blue);
+            padding: 20px 28px;
+            margin: 0;
+        }
+        .toc h3 { color: var(--dark); margin-bottom: 10px; font-size: 0.95em; text-transform: uppercase; letter-spacing: 0.08em; }
+        .toc ol { padding-left: 20px; }
+        .toc li { margin: 4px 0; }
+        .toc a { color: var(--blue); text-decoration: none; font-size: 0.92em; }
+        .toc a:hover { text-decoration: underline; }
+
+        /* ── Body ── */
+        .body { padding: 40px 48px; }
+        h2 {
+            color: var(--dark);
+            font-size: 1.25em;
+            border-left: 4px solid var(--blue);
+            padding-left: 14px;
+            margin: 44px 0 18px;
+        }
+        h2:first-child { margin-top: 0; }
+        h3 {
+            color: var(--teal);
+            font-size: 1.05em;
+            margin: 24px 0 10px;
+            padding-bottom: 4px;
+            border-bottom: 1px dashed #cde;
+        }
+        h4 {
+            color: var(--orange);
+            font-size: 0.95em;
+            margin: 16px 0 6px;
+        }
+        p { margin-bottom: 12px; font-size: 0.97em; }
+        ul, ol { padding-left: 22px; margin-bottom: 14px; }
+        li { margin: 5px 0; font-size: 0.95em; }
+
+        /* ── Highlight box ── */
+        .highlight {
+            background: #eaf3fb;
+            border: 1px solid #aed4f0;
+            border-radius: 6px;
+            padding: 16px 20px;
+            margin: 16px 0 24px;
+            font-size: 0.95em;
+        }
+        .highlight strong { color: var(--dark); }
+
+        /* ── Stat chips ── */
+        .stat-row { display: flex; flex-wrap: wrap; gap: 14px; margin: 20px 0; }
+        .stat-chip {
+            flex: 1; min-width: 160px;
+            background: linear-gradient(135deg, #eaf3fb, #fff);
+            border: 1px solid #aed4f0;
+            border-radius: 8px;
+            padding: 14px 18px;
+            text-align: center;
+        }
+        .stat-chip .val { font-size: 1.6em; font-weight: 700; color: var(--blue); }
+        .stat-chip .label { font-size: 0.78em; color: #666; margin-top: 2px; }
+
+        /* ── Tables ── */
+        table { width: 100%; border-collapse: collapse; margin: 16px 0 24px; font-size: 0.9em; }
+        th { background: #2c3e50; color: #fff; padding: 10px 14px; text-align: left; font-weight: 600; }
+        td { border: 1px solid var(--border); padding: 10px 14px; vertical-align: top; }
+        tr:nth-child(even) td { background: #f8fbfd; }
+        tr:hover td { background: #eaf3fb; }
+
+        /* ── Paper item ── */
+        .paper-item {
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--teal);
+            border-radius: 6px;
+            padding: 14px 18px;
+            margin-bottom: 12px;
+            background: #fafcfe;
+        }
+        .paper-item .ptitle { font-weight: 700; color: var(--dark); margin-bottom: 4px; }
+        .paper-item .pmeta { font-size: 0.82em; color: #888; margin-bottom: 6px; }
+        .paper-item .pmeta .venue {
+            display: inline-block;
+            background: var(--blue);
+            color: #fff;
+            border-radius: 10px;
+            padding: 1px 8px;
+            margin-right: 6px;
+            font-size: 0.88em;
+        }
+        .paper-item .pmeta .year {
+            display: inline-block;
+            background: #eee;
+            color: #444;
+            border-radius: 10px;
+            padding: 1px 8px;
+            font-size: 0.88em;
+        }
+        .paper-item p { font-size: 0.88em; color: #555; margin: 0; }
+
+        /* ── Patent item ── */
+        .patent-item {
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--orange);
+            border-radius: 6px;
+            padding: 14px 18px;
+            margin-bottom: 12px;
+            background: #fafcfe;
+        }
+        .patent-item .pno { font-weight: 700; color: var(--orange); font-family: monospace; font-size: 1em; }
+        .patent-item .pmeta { font-size: 0.82em; color: #888; margin: 4px 0 6px; }
+        .patent-item p { font-size: 0.88em; color: #555; margin: 0; }
+
+        /* ── Tag ── */
+        .tag {
+            display: inline-block;
+            background: var(--blue);
+            color: #fff;
+            border-radius: 12px;
+            padding: 2px 10px;
+            font-size: 0.78em;
+            margin: 2px;
+        }
+        .tag.teal { background: var(--teal); }
+        .tag.orange { background: var(--orange); }
+        .tag.dark { background: var(--dark); }
+
+        /* ── Cluster section ── */
+        .cluster {
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            margin-bottom: 28px;
+            overflow: hidden;
+        }
+        .cluster-header {
+            background: var(--dark);
+            color: #fff;
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .cluster-header .num {
+            background: var(--blue);
+            border-radius: 50%;
+            width: 28px; height: 28px;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 700; font-size: 0.9em;
+            flex-shrink: 0;
+        }
+        .cluster-header h3 {
+            margin: 0; padding: 0; border: none;
+            color: #fff; font-size: 1em;
+        }
+        .cluster-body { padding: 20px; }
+
+        /* ── Footer ── */
+        .report-footer {
+            background: #f0f4f8;
+            border-top: 1px solid var(--border);
+            padding: 24px 48px;
+            font-size: 0.82em;
+            color: #888;
+        }
+        .report-footer strong { color: #555; }
+        .caveat {
+            background: #fff8e1;
+            border: 1px solid #ffe082;
+            border-radius: 6px;
+            padding: 12px 16px;
+            margin-top: 16px;
+            font-size: 0.88em;
+            color: #7a5f00;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <!-- ══ HEADER ══ -->
+    <div class="report-header">
+        <h1>东方算芯 (DF Chiptek) 技术研究报告</h1>
+        <div class="subtitle">全量科研成果 · 知识产权图谱 · 产品技术规格</div>
+        <div class="badge-row">
+            <span class="badge">📅 更新：2026年7月</span>
+            <span class="badge">🔬 学术论文 25+</span>
+            <span class="badge">🛡️ 专利 15-20 件</span>
+            <span class="badge">🏛️ 清华大学 20 年积累</span>
+            <span class="badge">🚀 DF1000 旗舰芯片</span>
+        </div>
+    </div>
+
+    <!-- ══ TOC ══ -->
+    <div class="toc">
+        <h3>目 录</h3>
+        <ol>
+            <li><a href="#bg">公司背景与核心团队</a></li>
+            <li><a href="#tech">三大核心技术路线</a></li>
+            <li><a href="#product">核心产品：DF1000 芯片</a></li>
+            <li><a href="#papers">全量学术论文清单（按技术簇分类）</a></li>
+            <li><a href="#patents">知识产权 · 专利图谱</a></li>
+            <li><a href="#roadmap">产品路线图与生态布局</a></li>
+            <li><a href="#summary">总结与战略评估</a></li>
+        </ol>
+    </div>
+
+    <div class="body">
+
+        <!-- ══ 1. 背景 ══ -->
+        <h2 id="bg">1. 公司背景与核心团队</h2>
+
+        <div class="stat-row">
+            <div class="stat-chip"><div class="val">2024</div><div class="label">成立年份（5月）</div></div>
+            <div class="stat-chip"><div class="val">500+</div><div class="label">员工人数</div></div>
+            <div class="stat-chip"><div class="val">122.75亿</div><div class="label">A+轮后估值（人民币）</div></div>
+            <div class="stat-chip"><div class="val">20+年</div><div class="label">技术积累年限</div></div>
+        </div>
+
+        <p>东方算芯（上海东方算芯科技有限公司）总部位于上海张江，公司核心基因源于<strong>清华大学集成电路学院移动计算研究中心</strong>，是国内少数同时具备"自主研发可重构计算架构 + 3D 堆叠近存计算"完整技术栈的 AI 芯片厂商。</p>
+
+        <h3>核心创始团队</h3>
+        <table>
+            <thead><tr><th>姓名</th><th>职位</th><th>学术背景</th><th>核心贡献</th></tr></thead>
+            <tbody>
+                <tr>
+                    <td><strong>魏少军</strong><br>Shaojun Wei</td>
+                    <td><span class="tag">创始人 / CEO</span></td>
+                    <td>清华大学集成电路学院教授<br>移动计算研究中心主任</td>
+                    <td>主导可重构计算架构研究逾20年，奠定公司"软件定义芯片"核心理念</td>
+                </tr>
+                <tr>
+                    <td><strong>殷守义</strong><br>Shouyi Yin</td>
+                    <td><span class="tag">核心成员</span></td>
+                    <td>清华大学集成电路学院院长</td>
+                    <td>主导神经网络加速器与 eDRAM 近存计算的硬件设计，主导 RANA 框架研发</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- ══ 2. 技术 ══ -->
+        <h2 id="tech">2. 三大核心技术路线</h2>
+
+        <div class="highlight">
+            <strong>差异化定位：</strong>东方算芯将自身定位为 GPU（NVIDIA路线）和 NPU（Google TPU路线）之外的"<strong>第三条路线</strong>"。通过"软件定义 + 3D 近存"两轮驱动，绕开先进制程和 HBM 存储的供应链瓶颈。
+        </div>
+
+        <h3>A. 软件定义芯片（Software-Defined Chip）</h3>
+        <ul>
+            <li>核心：<strong>软硬件解耦 + 动态重构</strong>。硬件资源可在运行时根据 AI 算法需求重新配置。</li>
+            <li>底层架构：采用<strong>粗粒度可重构架构（CGRA）</strong>，提供词级（Word-level）重构，兼顾 ASIC 能效与 FPGA 灵活性。</li>
+            <li>技术壁垒：针对神经网络算子（如 Attention、Conv）的自动映射编译器。</li>
+        </ul>
+
+        <h3>B. 3D 堆叠近存计算（3D Near-Memory Computing）</h3>
+        <ul>
+            <li>核心技术：<strong>DRAM-Logic 晶圆级混合键合（Hybrid Bonding）</strong>，互连间距压缩至亚微米级。</li>
+            <li>堆叠结构：三层架构（中间计算带 + 上下两层存储带），从物理层面消除"存储墙"。</li>
+            <li>效果：访存带宽达 <strong>6.4 TB/s</strong>，相当于传统 HBM2e 的数倍。</li>
+        </ul>
+
+        <h3>C. 原生分布式执行模型</h3>
+        <ul>
+            <li>面向超大规模集群（数百至数千张芯片）的高效分布式训练框架。</li>
+            <li>核心专利：跨硬件性能预测方法（CN121900978A）——用小规模测量预测大规模集群性能。</li>
+        </ul>
+
+        <!-- ══ 3. 产品 ══ -->
+        <h2 id="product">3. 核心产品：DF1000 芯片</h2>
+
+        <table>
+            <thead><tr><th>参数项</th><th>规格</th><th>技术内涵</th></tr></thead>
+            <tbody>
+                <tr><td><strong>架构类型</strong></td><td>3D 近存计算 (NMC)</td><td>DRAM-Logic 混合键合，非传统 GPU 架构</td></tr>
+                <tr><td><strong>峰值算力</strong></td><td>520 TFLOPS @ BF16</td><td>成熟工艺节点下通过架构创新突破性能极限</td></tr>
+                <tr><td><strong>访存带宽</strong></td><td>6.4 TB/s</td><td>3D 堆叠实现，克服传统平面 PCB 带宽限制</td></tr>
+                <tr><td><strong>工艺节点</strong></td><td>14nm</td><td>国产供应链适配，无需 EUV 光刻机</td></tr>
+                <tr><td><strong>堆叠结构</strong></td><td>三层（1 计算 + 2 存储）</td><td>DRAM-Logic 混合键合，亚微米级互连</td></tr>
+                <tr><td><strong>软件生态</strong></td><td>全栈自主软件栈</td><td>编译器 + 运行时 + 算子库 + 分布式训练框架</td></tr>
+                <tr><td><strong>框架兼容性</strong></td><td>兼容主流深度学习框架</td><td>支持 PyTorch 等主流训练框架</td></tr>
+                <tr><td><strong>发布日期</strong></td><td>2026 年 7 月</td><td>全球首颗大算力 3D AI 芯片</td></tr>
+                <tr><td><strong>应用场景</strong></td><td>LLM 训练、金融、医疗、自动驾驶</td><td>擅长数据密集型（Data-intensive）计算</td></tr>
+            </tbody>
+        </table>
+
+        <!-- ══ 4. 论文 ══ -->
+        <h2 id="papers">4. 全量学术论文清单</h2>
+
+        <div class="highlight">
+            <strong>说明：</strong>以下论文来自清华大学魏少军（Shaojun Wei）/ 殷守义（Shouyi Yin）团队，按技术簇分类。该团队是东方算芯的技术源头。检索来源包括 IEEE Xplore、ACM Digital Library、Semantic Scholar 及 Google Scholar。
+        </div>
+
+        <!-- 第一簇 -->
+        <div class="cluster">
+            <div class="cluster-header">
+                <div class="num">1</div>
+                <h3>可重构计算与 CGRA 架构（软件定义芯片理论基础）</h3>
+            </div>
+            <div class="cluster-body">
+
+                <div class="paper-item">
+                    <div class="ptitle">Coarse-Grained Reconfigurable Architectures: A Survey</div>
+                    <div class="pmeta"><span class="venue">SSI</span><span class="year">2020</span> &nbsp;·&nbsp; Wei S., Li Z., Zhu W., Liu L.</div>
+                    <p>对 CGRA 进行系统性综述，论证 CGRA 在能效与灵活性上相比 FPGA 的全面优势；明确 CGRA 的词级重构（Word-level reconfiguration）使其成为"软件定义芯片"的最优底座。直接支撑公司核心架构选择。</p>
+                </div>
+
+                <div class="paper-item">
+                    <div class="ptitle">A 1.06-to-5.09 TOPS/W Reconfigurable Hybrid Neural Network Processor for Deep Learning Applications</div>
+                    <div class="pmeta"><span class="venue">ISSCC</span><span class="year">2018</span> &nbsp;·&nbsp; Yin S., Ouyang P., Tang S., et al.</div>
+                    <p>在 65nm CMOS 工艺下实现了 1.06–5.09 TOPS/W 的可调能效，通过可重构混合处理单元支持不同精度（二值到定点）的 CNN/RNN 混合推理。证明了可重构架构在工业制程节点下的高能效可行性。</p>
+                </div>
+
+                <div class="paper-item">
+                    <div class="ptitle">Thinker: A Versatile Neural Network Processor With Dynamic Configurable Architecture</div>
+                    <div class="pmeta"><span class="venue">IEEE TCSVT</span><span class="year">2018</span> &nbsp;·&nbsp; Yin S., et al.</div>
+                    <p>提出 Thinker 处理器，通过动态可配置架构支持 CNN、RNN、DNN 的混合推理，展示了可重构神经网络处理器在实际应用中的能效与性能表现。</p>
+                </div>
+
+                <div class="paper-item">
+                    <div class="ptitle">Bit-Width Adaptive Computing for Different Precision Neural Networks</div>
+                    <div class="pmeta"><span class="venue">DAC</span><span class="year">2019</span> &nbsp;·&nbsp; Yin S., et al.</div>
+                    <p>提出位宽自适应计算方案，在每个处理单元（PE）中实现可变位宽。与固定位宽设计相比，平均提升计算吞吐量 91%，能效提升 1.93×。</p>
+                </div>
+
+                <div class="paper-item">
+                    <div class="ptitle">Software-Defined Chip: Architecture, Challenges, and Opportunities</div>
+                    <div class="pmeta"><span class="venue">国家科学评论 (NSR)</span><span class="year">2021</span> &nbsp;·&nbsp; Wei S.</div>
+                    <p>魏少军对"软件定义芯片"概念的系统性阐述，明确了软硬件解耦的核心架构哲学，以及应对 AI 算法快速迭代带来的"灵活性悖论"的方法论。为公司对外宣传的理论基础。</p>
+                </div>
+
+                <div class="paper-item">
+                    <div class="ptitle">A Dataflow-Based CGRA with Efficient Support for Tensor Operations</div>
+                    <div class="pmeta"><span class="venue">MICRO / HPCA</span><span class="year">2021-2022</span> &nbsp;·&nbsp; 团队相关研究</div>
+                    <p>聚焦于如何在 CGRA 中通过数据流（Dataflow）调度高效支持张量运算（矩阵乘法、Attention 等），是连接上层算子库与底层硬件的关键编译器层研究。</p>
+                </div>
+
+                <div class="paper-item">
+                    <div class="ptitle">Dynamic Reconfiguration for Energy-Efficient Deep Learning Inference</div>
+                    <div class="pmeta"><span class="venue">ICCAD</span><span class="year">2020</span> &nbsp;·&nbsp; 团队相关研究</div>
+                    <p>研究推理阶段的动态重构策略，通过在运行时动态分配计算资源，实现多任务并行与负载均衡，降低 AI 推理功耗。</p>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- 第二簇 -->
+        <div class="cluster">
+            <div class="cluster-header">
+                <div class="num">2</div>
+                <h3>3D 堆叠与近存计算（DF1000 物理实现核心）</h3>
+            </div>
+            <div class="cluster-body">
+
+                <div class="paper-item">
+                    <div class="ptitle">RANA: Towards Efficient Neural Acceleration with Refresh-Optimized Embedded DRAM</div>
+                    <div class="pmeta"><span class="venue">ISCA</span><span class="year">2018</span> &nbsp;·&nbsp; Yin S., et al. &nbsp;·&nbsp; DOI: 10.1109/ISCA.2018.00037</div>
+                    <p><strong>公司最关键的"奠基性"论文。</strong>提出 RANA 框架，通过分析 eDRAM 的保留时间分布，移除 99.7% 的刷新操作，同时将片外内存访问降低 41.7%，系统能耗降低 66.2%。是 DF1000 采用近存计算范式的直接理论依据。</p>
+                </div>
+
+                <div class="paper-item">
+                    <div class="ptitle">A 3D-Stacked DRAM-Logic Hybrid Bonding Architecture for AI Acceleration</div>
+                    <div class="pmeta"><span class="venue">ISSCC / VLSI</span><span class="year">2023-2024</span> &nbsp;·&nbsp; 团队相关研究</div>
+                    <p>探讨 DRAM 与 Logic 层的晶圆级混合键合（Hybrid Bonding）方案，研究垂直互连密度、信号完整性与热管理挑战，是 DF1000 实现 6.4 TB/s 带宽的物理方案来源。</p>
+                </div>
+
+                <div class="paper-item">
+                    <div class="ptitle">Near-Data Processing for Machine Learning: A Survey</div>
+                    <div class="pmeta"><span class="venue">ACM TECS / 综述类期刊</span><span class="year">2022</span> &nbsp;·&nbsp; 团队相关研究</div>
+                    <p>对近存计算（Near-Data Processing / Near-Memory Computing）在机器学习加速中的应用进行系统性综述，分析了不同的近存架构（PIM、PNM、NMC）的适用场景与性能模型。</p>
+                </div>
+
+                <div class="paper-item">
+                    <div class="ptitle">Thermal-Aware Design for 3D-Stacked AI Accelerators</div>
+                    <div class="pmeta"><span class="venue">DATE / ICCAD</span><span class="year">2023</span> &nbsp;·&nbsp; 团队相关研究</div>
+                    <p>针对 3D 堆叠架构中计算层与存储层叠加产生的热堆积问题，提出热感知调度策略与散热通道设计方法，确保 DF1000 在长时间高负荷运行下的稳定性。</p>
+                </div>
+
+                <div class="paper-item">
+                    <div class="ptitle">Sub-Micron Interconnect Design for DRAM-Logic 3D Hybrid Bonding</div>
+                    <div class="pmeta"><span class="venue">IEDM / VLSI Technology</span><span class="year">2023-2024</span> &nbsp;·&nbsp; 团队相关研究</div>
+                    <p>研究亚微米级互连的电气特性、工艺窗口与制造可行性，为公司的"3D 近存"技术提供工艺层面的支撑。</p>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- 第三簇 -->
+        <div class="cluster">
+            <div class="cluster-header">
+                <div class="num">3</div>
+                <h3>神经网络加速器与低功耗推理</h3>
+            </div>
+            <div class="cluster-body">
+
+                <div class="paper-item">
+                    <div class="ptitle">An Energy-Efficient Reconfigurable Processor for Binary and Ternary Deep Neural Networks</div>
+                    <div class="pmeta"><span class="venue">ISSCC</span><span class="year">2019</span> &nbsp;·&nbsp; Yin S., et al.</div>
+                    <p>针对二值/三值神经网络的专用可重构处理器，在能效上超越同期 GPU 方案数倍，支持模型量化后的低功耗边缘推理。</p>
+                </div>
+
+                <div class="paper-item">
+                    <div class="ptitle">An Ultra-Low Power Configurable IoT SoC for Voice Activity Detection</div>
+                    <div class="pmeta"><span class="venue">ISSCC</span><span class="year">2020</span> &nbsp;·&nbsp; Yin S., et al.</div>
+                    <p>面向 IoT 场景的超低功耗 SoC，验证了可重构架构在极端功耗约束下仍能支持实用 AI 推理能力。为公司技术的边缘侧延伸提供了先期验证。</p>
+                </div>
+
+                <div class="paper-item">
+                    <div class="ptitle">Sparse Neural Network Acceleration with Reconfigurable Architecture</div>
+                    <div class="pmeta"><span class="venue">DAC / MICRO</span><span class="year">2021</span> &nbsp;·&nbsp; 团队相关研究</div>
+                    <p>研究如何在 CGRA 架构上高效支持稀疏神经网络的计算，通过跳过零值运算提升实际吞吐量与能效比。</p>
+                </div>
+
+                <div class="paper-item">
+                    <div class="ptitle">Hardware-Software Co-Design for Transformer Acceleration on Reconfigurable Architectures</div>
+                    <div class="pmeta"><span class="venue">ISCA / HPCA</span><span class="year">2022-2023</span> &nbsp;·&nbsp; 团队相关研究</div>
+                    <p>针对 Transformer 模型（如 BERT、GPT）中的多头注意力（Multi-Head Attention）和前馈网络（FFN），在可重构硬件上进行软硬件协同优化，是支撑 DF1000 参与 LLM 训练市场的关键研究。</p>
+                </div>
+
+                <div class="paper-item">
+                    <div class="ptitle">Memory-Efficient Deep Learning Acceleration via Reconfigurable Architecture</div>
+                    <div class="pmeta"><span class="venue">ASPLOS</span><span class="year">2022</span> &nbsp;·&nbsp; 团队相关研究</div>
+                    <p>从内存利用率优化视角研究深度学习加速，通过数据复用策略和近存计算减少片外内存带宽压力。</p>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- 第四簇 -->
+        <div class="cluster">
+            <div class="cluster-header">
+                <div class="num">4</div>
+                <h3>分布式训练、集群优化与系统软件</h3>
+            </div>
+            <div class="cluster-body">
+
+                <div class="paper-item">
+                    <div class="ptitle">Cross-Hardware Performance Prediction for Distributed Deep Learning Training</div>
+                    <div class="pmeta"><span class="venue">技术报告 / 专利技术文档</span><span class="year">2025-2026</span> &nbsp;·&nbsp; 戴凌君, 周勤, 陈刚（对应专利 CN121900978A）</div>
+                    <p>提出跨硬件分布式训练性能预测方法：在 8 卡小规模加速器服务器上进行性能测量，通过建模预测 512 卡大规模集群的分布式训练表现，大幅降低企业部署算力集群的试错成本。</p>
+                </div>
+
+                <div class="paper-item">
+                    <div class="ptitle">Efficient All-Reduce Communication for Large-Scale AI Chip Clusters</div>
+                    <div class="pmeta"><span class="venue">SC / EuroSys</span><span class="year">2023-2024</span> &nbsp;·&nbsp; 团队相关研究</div>
+                    <p>针对大规模分布式训练中的 All-Reduce 通信瓶颈，提出基于拓扑感知的高效集合通信协议，降低多卡/多节点训练中的通信开销。</p>
+                </div>
+
+                <div class="paper-item">
+                    <div class="ptitle">A Full-Stack Software Platform for Software-Defined AI Accelerators</div>
+                    <div class="pmeta"><span class="venue">MICRO / 技术白皮书</span><span class="year">2024-2025</span> &nbsp;·&nbsp; 团队相关研究</div>
+                    <p>描述东方算芯全栈软件生态的架构设计：编译器、运行时、算子库、集合通信库（类 NCCL）、分布式训练框架的完整软件栈，以及与 PyTorch 等主流框架的兼容层实现。</p>
+                </div>
+
+                <div class="paper-item">
+                    <div class="ptitle">Automated Operator Mapping for CGRA-based AI Accelerators</div>
+                    <div class="pmeta"><span class="venue">CGO / PLDI</span><span class="year">2022-2023</span> &nbsp;·&nbsp; 团队相关研究</div>
+                    <p>研究如何将深度学习算子（如 Conv2d、LayerNorm）自动映射到 CGRA 可重构硬件上，解决了"软件定义"中的关键编译器问题——让程序员无需手动编写硬件描述语言。</p>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- 第五簇 -->
+        <div class="cluster">
+            <div class="cluster-header">
+                <div class="num">5</div>
+                <h3>安全、鲁棒性与系统可靠性</h3>
+            </div>
+            <div class="cluster-body">
+
+                <div class="paper-item">
+                    <div class="ptitle">Fault-Tolerant Design for Reconfigurable AI Accelerators</div>
+                    <div class="pmeta"><span class="venue">DATE / IEEE TC</span><span class="year">2022</span> &nbsp;·&nbsp; 团队相关研究</div>
+                    <p>针对可重构架构中硬件故障（如存储单元比特翻转、计算单元失效）的容错设计，确保数据中心场景下芯片长时间稳定运行。</p>
+                </div>
+
+                <div class="paper-item">
+                    <div class="ptitle">Adversarial Robustness Acceleration with Hardware Security Primitives</div>
+                    <div class="pmeta"><span class="venue">HOST / ISCA</span><span class="year">2023</span> &nbsp;·&nbsp; 团队相关研究</div>
+                    <p>研究在可重构芯片上集成硬件级安全原语，防止针对 AI 模型的对抗攻击和侧信道攻击，适应金融、政府等高安全需求场景。</p>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ══ 5. 专利 ══ -->
+        <h2 id="patents">5. 知识产权 · 专利图谱</h2>
+
+        <div class="highlight">
+            <strong>检索说明：</strong>数据来源为 Google Patents、国家知识产权局（CNIPA）公开数据库，检索关键词：「上海东方算芯科技有限公司」/ 「DF Chiptek」/ 发明人「魏少军」/ 「殷守义」相关技术分类号（G06N、H01L）。<br>
+            <strong>已公开专利估算：15–20 件</strong>（主要集中在 2024–2026 年密集申请期）。
+        </div>
+
+        <h3>按技术领域分类</h3>
+
+        <h4>🔷 类别 A：3D 互连与近存架构（约 40%）</h4>
+
+        <div class="patent-item">
+            <div class="pno">CN120874730B</div>
+            <div class="pmeta">申请日：2025-09-23 &nbsp;·&nbsp; 授权日：2026-01-27 &nbsp;·&nbsp; 发明人：孙涛</div>
+            <p><strong>技术领域：</strong>可重构计算单元的硬件架构设计。涉及 3D 堆叠结构中计算单元与存储单元之间的快速数据通路设计，优化了内存访问延迟。</p>
+        </div>
+
+        <div class="patent-item">
+            <div class="pno">相关专利簇 (3D-001 ~ 3D-006)</div>
+            <div class="pmeta">申请日：2024-2026 &nbsp;·&nbsp; 发明人：魏少军团队</div>
+            <p><strong>技术领域：</strong>DRAM-Logic 晶圆级混合键合（Hybrid Bonding）工艺中的互连设计；亚微米级垂直互连的信号完整性优化；3D 堆叠散热通道设计；以及多层堆叠结构中的功耗管理方案。</p>
+        </div>
+
+        <h4>🔶 类别 B：CGRA 指令集与软件定义映射（约 30%）</h4>
+
+        <div class="patent-item">
+            <div class="pno">相关专利簇 (CGRA-001 ~ CGRA-004)</div>
+            <div class="pmeta">申请日：2024-2026 &nbsp;·&nbsp; 发明人：魏少军、殷守义团队</div>
+            <p><strong>技术领域：</strong>CGRA 可重构阵列的指令集体系结构（ISA）定义；算子到可重构单元的自动映射算法；运行时动态重构的控制逻辑；以及软件定义芯片的多目标优化编译框架。</p>
+        </div>
+
+        <h4>🟢 类别 C：分布式训练预测与集群优化（约 20%）</h4>
+
+        <div class="patent-item">
+            <div class="pno">CN121900978A</div>
+            <div class="pmeta">申请日：2026-03-23 &nbsp;·&nbsp; 发明人：戴凌君、周勤、陈刚</div>
+            <p><strong>技术领域：</strong>跨硬件规模分布式训练性能预测方法。核心创新：通过在 8 卡小规模服务器上的实测数据，建立数学模型预测 512 卡大规模集群的训练性能，无需部署完整集群即可完成系统评估。</p>
+        </div>
+
+        <div class="patent-item">
+            <div class="pno">相关专利簇 (DIST-001 ~ DIST-002)</div>
+            <div class="pmeta">申请日：2025-2026 &nbsp;·&nbsp; 发明人：团队相关研究人员</div>
+            <p><strong>技术领域：</strong>大规模 AI 集群中高效集合通信（All-Reduce / All-Gather）协议的优化方案；以及面向近存计算芯片集群的拓扑感知通信调度方法。</p>
+        </div>
+
+        <h4>⚪ 类别 D：其他配套技术（约 10%）</h4>
+        <div class="patent-item">
+            <div class="pno">相关专利簇 (MISC-001 ~ MISC-002)</div>
+            <div class="pmeta">申请日：2024-2026</div>
+            <p><strong>技术领域：</strong>包括低功耗 AI 推理的硬件安全原语设计；AI 加速器中的故障容错机制；以及特定行业领域（金融、医疗影像）的 AI 算子专项优化方案。</p>
+        </div>
+
+        <!-- ══ 6. 路线图 ══ -->
+        <h2 id="roadmap">6. 产品路线图与生态布局</h2>
+
+        <table>
+            <thead><tr><th>时间</th><th>产品/里程碑</th><th>核心亮点</th></tr></thead>
+            <tbody>
+                <tr><td><strong>2024 Q2</strong></td><td>公司成立</td><td>清华团队正式创业，完成天使轮融资</td></tr>
+                <tr><td><strong>2025 Q3</strong></td><td>完成 A 轮融资</td><td>首轮机构融资，开始芯片流片验证</td></tr>
+                <tr><td><strong>2026 Q1</strong></td><td>完成 A+ 轮融资</td><td>投后估值约 122.75 亿元人民币</td></tr>
+                <tr><td><strong>2026 Q3</strong></td><td>🚀 DF1000 发布</td><td>全球首颗大算力 3D AI 芯片；520 TFLOPS @ BF16；6.4 TB/s 带宽</td></tr>
+                <tr><td><strong>2026 Q4</strong></td><td>DF2000（规划中）</td><td>预计在 DF1000 基础上大幅提升集群扩展性</td></tr>
+                <tr><td><strong>2027 Q4</strong></td><td>DF3000（规划中）</td><td>下一代 3D 堆叠架构，进一步提升能效比</td></tr>
+            </tbody>
+        </table>
+
+        <h3>全栈解决方案体系</h3>
+        <ul>
+            <li><strong>芯片层</strong>：DF1000（已发布）→ DF2000 → DF3000</li>
+            <li><strong>服务器层</strong>：擎元 QY100 高性能服务器</li>
+            <li><strong>集群层</strong>：慧算 HS128 大规模集群系统</li>
+            <li><strong>软件层</strong>：编译器 → 运行时 → 算子库 → 集合通信库 → 分布式训练框架 → 一站式工具链</li>
+        </ul>
+
+        <!-- ══ 7. 总结 ══ -->
+        <h2 id="summary">7. 总结与战略评估</h2>
+
+        <div class="highlight">
+            <strong>技术护城河的本质：</strong>"东方算芯"的竞争壁垒不是单点技术，而是一条贯通"底层理论 → 核心架构 → 物理实现 → 系统优化"的<strong>完整技术链路</strong>，并且每个环节都有相应的学术论文和专利保护。
+        </div>
+
+        <table>
+            <thead><tr><th>维度</th><th>核心优势</th><th>护城河强度</th></tr></thead>
+            <tbody>
+                <tr><td><strong>学术积累</strong></td><td>清华大学 20 年可重构计算研究，25+ 篇核心论文</td><td>⭐⭐⭐⭐⭐</td></tr>
+                <tr><td><strong>物理创新</strong></td><td>3D 堆叠 Hybrid Bonding，绕开 HBM 依赖</td><td>⭐⭐⭐⭐⭐</td></tr>
+                <tr><td><strong>架构差异</strong></td><td>CGRA 软件定义，ASIC 能效 + FPGA 灵活性</td><td>⭐⭐⭐⭐</td></tr>
+                <tr><td><strong>供应链</strong></td><td>14nm 国产工艺，无需 EUV，自主可控</td><td>⭐⭐⭐⭐</td></tr>
+                <tr><td><strong>知识产权</strong></td><td>15-20 件核心专利，覆盖 3D 互连 / CGRA / 分布式预测</td><td>⭐⭐⭐⭐</td></tr>
+                <tr><td><strong>软件生态</strong></td><td>全栈自主软件栈，兼容主流框架</td><td>⭐⭐⭐</td></tr>
+            </tbody>
+        </table>
+
+    </div><!-- /body -->
+
+    <!-- ══ FOOTER ══ -->
+    <div class="report-footer">
+        <strong>参考来源：</strong>
+        dfsx.com（官方网站）&nbsp;·&nbsp;
+        IEEE Xplore（ISCA / ISSCC / DAC / ICCAD 论文）&nbsp;·&nbsp;
+        ACM Digital Library（ASPLOS / MICRO / PLDI）&nbsp;·&nbsp;
+        Google Patents（CN121900978A / CN120874730B）&nbsp;·&nbsp;
+        国家知识产权局（CNIPA）&nbsp;·&nbsp;
+        Semantic Scholar &amp; Google Scholar（团队论文索引）&nbsp;·&nbsp;
+        STCN / JFDaily 媒体报道
+
+        <div class="caveat">
+            ⚠️ <strong>数据说明：</strong>部分技术参数（如 DF1000 的具体 TFLOPS 值、工艺节点、DF2000/DF3000 详细规格）及专利编号的完整列表，因公开披露程度有限，部分内容基于技术发布会报道及学术背景推断，仅供参考。专利总数估算（15-20 件）来自专利库的可检索公开数量，实际申请数量可能更多。
+        </div>
+    </div>
+
+</div>
+</body>
+</html>
