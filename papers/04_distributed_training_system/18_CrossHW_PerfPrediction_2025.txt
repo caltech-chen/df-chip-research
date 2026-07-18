@@ -1,0 +1,25 @@
+Title: Cross-Hardware Performance Prediction for Distributed Deep Learning Training
+Year: 2025
+DOI: Not found
+arXiv ID: Not found
+Related Patent: CN121900978A (Shanghai Dongfang Suanxin Technology Co., Ltd.)
+
+Search Attempts:
+1. arXiv search: https://arxiv.org/search/?searchtype=all&query=cross+hardware+performance+prediction+distributed+training
+   - Result: 4 results, none matching (tried 11 results with variant query, none matching)
+2. Semantic Scholar: https://www.semanticscholar.org/search?q=cross+hardware+performance+prediction+distributed+deep+learning&sort=Relevance
+   - Result: No matching paper
+3. arXiv exact-phrase search: "cross-hardware performance prediction" "distributed deep learning"
+   - Result: 0 results
+4. Google Scholar exact-phrase search
+   - Result: 0 results since 2025
+5. Web search for exact title
+   - Result: No hits
+
+Failure Reason:
+The paper "Cross-Hardware Performance Prediction for Distributed Deep Learning Training" (2025) does not exist as a publicly available academic paper. The related patent CN121900978A (formal title: "Strategy Optimization Method, Apparatus, Device, Storage Medium, and Computer Program Product", filed March 2026 by Shanghai Dongfang Suanxin) describes similar technology but no associated academic paper has been publicly released. The company appears to keep technical work in patent/product form rather than arXiv preprints.
+
+Closest Related Paper Found:
+- "Efficient Fine-Grained GPU Performance Modeling for Distributed Deep Learning of LLM"
+  arXiv ID: 2509.22832, PDF: https://arxiv.org/pdf/2509.22832
+  Submitted: September 26, 2025 — thematically similar but not the requested paper and unaffiliated with Dongfang Suanxin

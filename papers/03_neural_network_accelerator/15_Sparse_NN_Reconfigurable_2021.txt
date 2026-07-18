@@ -1,0 +1,23 @@
+Title: Sparse Neural Network Acceleration with Reconfigurable Architecture
+Year: 2021
+DOI: Not found
+arXiv ID: Not found
+
+Search Attempts:
+1. arXiv search: https://arxiv.org/search/?searchtype=all&query=sparse+neural+network+reconfigurable+architecture+2021
+   - Result: No matching paper (only 1 result with both terms, from 2018)
+2. Semantic Scholar: https://www.semanticscholar.org/search?q=sparse+neural+network+reconfigurable+accelerator+2021&sort=Relevance
+   - Result: HTTP 400 error / rate-limited
+3. DBLP: keyword combination search
+   - Result: Zero hits
+4. Multiple web searches with exact-title and keyword variants
+   - Result: No source confirmed existence of paper with this title
+
+Failure Reason:
+The paper "Sparse Neural Network Acceleration with Reconfigurable Architecture" (2021) does not appear to exist on arXiv, DBLP, or any discoverable academic database under this exact title. No arXiv ID or DOI could be found.
+
+Closest Related Papers Found (2021):
+- "Sanger: A Co-Design Framework for Enabling Sparse Attention using Reconfigurable Architecture" — MICRO 2021, ACM DOI: 10.1145/3466752.3480125 (no arXiv preprint)
+- arXiv:2109.04459 — "SONIC: A Sparse Neural Network Inference Accelerator with Silicon Photonics" (Sep 2021) — different topic
+
+Note: Title may be slightly different from the actual paper, or it may be a conference-only publication without arXiv preprint.

@@ -1,0 +1,17 @@
+Title: A Full-Stack Software Platform for Software-Defined AI Accelerators
+Year: 2024
+DOI: Not found
+arXiv ID: Not found
+
+Search Attempts:
+1. arXiv all-fields search: https://arxiv.org/search/?searchtype=all&query=full+stack+software+platform+software+defined+AI+accelerator
+   - Result: No results returned
+2. arXiv title-field search: https://arxiv.org/search/?searchtype=ti&query=full+stack+software+defined+AI+accelerator
+   - Result: No results returned
+3. Web search: "full-stack software platform" "software-defined" "AI accelerator" arXiv 2024
+   - Result: No specific paper matching this title found; only general descriptions of the concept
+
+Failure Reason:
+The paper "A Full-Stack Software Platform for Software-Defined AI Accelerators" (2024) does not appear to exist on arXiv or any discoverable academic database under this exact title. The search returned zero results even with broad and exact-phrase variants.
+
+Note: The agent processing this paper encountered an API connection error and was unable to complete a full exhaustive search. The title may correspond to an internal technical report, a workshop paper, or a publication in a venue not indexed on arXiv (e.g., industry track of MLSys, Hot Chips, or similar).

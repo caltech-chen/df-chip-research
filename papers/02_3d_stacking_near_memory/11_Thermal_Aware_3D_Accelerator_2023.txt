@@ -1,0 +1,29 @@
+论文信息 - 下载失败记录
+=======================
+
+标题（用户提供）：Thermal-Aware Design for 3D-Stacked AI Accelerators
+年份：2023
+
+注意：
+- 经过多轮搜索，未能找到此精确标题对应的实际论文
+- 该标题疑似为占位符/描述性标题，不对应具体发表的论文
+- 相关领域实际存在的代表性论文：
+  * "Tasa: Thermal-aware 3D-stacked architecture design with bandwidth sharing for LLM inference" (2025, arXiv)
+  * "TREAD-M3D: Temperature-Aware DNN Accelerators for Monolithic 3-D Mobile Systems"
+  * "Thermal Management for 3D-Stacked Systems via Unified Core-Memory Power Regulation" (ACM TECS, 2023)
+  * "Temperature-Aware Sizing of Multi-Chip Module Accelerators for Multi-DNN Workloads" (DATE 2023)
+  * "DeepStack: Scalable and Accurate Design Space Exploration for Distributed 3D-Stacked AI Accelerators" (arXiv:2604.04750, 2026)
+
+尝试过的链接/搜索：
+1. arXiv 搜索 "thermal aware 3D stacked AI accelerator" — 返回2篇结果，均不匹配（DeepStack 2026 和 SKYLIGHT 2026）
+2. arXiv 搜索 "thermal aware 3D stacked accelerator deep learning" — 无结果
+3. Web 搜索 "Thermal-Aware Design for 3D-Stacked AI Accelerators" 2023 — 无精确匹配
+
+失败原因：
+- 该标题未能在任何学术数据库或搜索引擎中找到精确匹配的论文
+- 标题可能是对该研究方向的描述性概括
+
+建议：
+- 确认论文的准确标题、作者、会议/期刊名称
+- 可参考 DATE 2023、ICCAD 2023、DAC 2023 的 3D stacking thermal 相关论文目录
+- 可能相关论文：TREAD-M3D, Tasa, NeuroTAP 等

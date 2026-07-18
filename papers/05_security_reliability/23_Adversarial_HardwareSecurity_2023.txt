@@ -1,0 +1,48 @@
+论文下载失败记录
+==================
+
+标题：Adversarial Robustness Acceleration with Hardware Security Primitives
+目标文件名：23_Adversarial_HardwareSecurity_2023.pdf
+记录时间：2026-07-17
+
+尝试过的来源和链接
+------------------
+
+1. arXiv（原始关键词）
+   - URL: https://arxiv.org/search/?searchtype=all&query=adversarial+robustness+hardware+security+primitives+accelerator
+   - 结果: 无匹配结果（0 results）
+
+2. arXiv（宽泛关键词）
+   - URL: https://arxiv.org/search/?searchtype=all&query=adversarial+robustness+hardware+security+neural+network
+   - 结果: 返回 27 条结果，均与目标论文标题不符。
+     最相关条目（均非目标论文）：
+     * arXiv:2603.28798 — "Design and Development of an ML/DL Attack Resistance of RC-Based PUF for IoT Security"
+     * arXiv:2606.25589 — "Leaking Circuit Secrets: Gradient Leakage Attacks on Graph Neural Networks"
+
+3. Semantic Scholar 搜索界面
+   - URL: https://www.semanticscholar.org/search?q=adversarial+robustness+hardware+security+primitives&sort=Relevance
+   - 结果: HTTP 400 错误（服务端拒绝请求）
+
+4. Semantic Scholar API
+   - URL: https://api.semanticscholar.org/graph/v1/paper/search?query=adversarial+robustness+hardware+security+primitives+accelerator&fields=title,year,externalIds,openAccessPdf&limit=5
+   - 结果: 429 Too Many Requests（频率限制，无 API Key）
+
+5. Web 搜索（Google）
+   - 查询: "Adversarial Robustness" "Hardware Security Primitives" accelerator arxiv 2023 paper PDF
+   - 结果: 未找到精确匹配论文。该主题研究通常发表于 AsianHOST、DATE、DAC 等安全/EDA
+     领域顶会，arXiv 预印本覆盖率较低。
+
+失败原因
+--------
+该论文标题 "Adversarial Robustness Acceleration with Hardware Security Primitives" 未在
+arXiv、Semantic Scholar 及公开网络搜索中找到精确匹配。该标题可能：
+1. 为会议/期刊论文（如 IEEE S&P、USENIX Security、HOST、AsianHOST、DATE）仅发布于付费平台
+2. 作者未将预印本上传至 arXiv
+3. 标题与实际发表标题有出入（如 "acceleration" 可能是 "accelerator"）
+
+建议后续行动
+------------
+- 在 IEEE Xplore (https://ieeexplore.ieee.org) 搜索完整标题
+- 在 ACM Digital Library (https://dl.acm.org) 搜索
+- 在 Google Scholar 中用关键词 "adversarial robustness" "hardware security primitives" 2023 搜索
+- 检查引用该论文的上游文献以确认准确标题、DOI 和来源

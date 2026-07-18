@@ -1,0 +1,51 @@
+Title: Memory-Efficient Deep Learning Acceleration via Reconfigurable Architecture
+Year: 2022 (claimed ASPLOS 2022)
+DOI: Not found
+arXiv ID: Not found
+
+Search Attempts:
+1. arXiv search (exact phrase, all fields):
+   https://arxiv.org/search/?searchtype=all&query=memory+efficient+deep+learning+reconfigurable+ASPLOS+2022
+   - Result: No results
+
+2. arXiv search (broader, title field):
+   https://arxiv.org/search/?searchtype=ti&query=memory+efficient+deep+learning+acceleration+reconfigurable
+   - Result: No results
+
+3. arXiv search (exact phrase with quotes):
+   https://arxiv.org/search/?searchtype=all&query=%22memory-efficient+deep+learning+acceleration%22+%22reconfigurable%22
+   - Result: No results
+
+4. ACM Digital Library search:
+   https://dl.acm.org/doi/search?query=memory+efficient+deep+learning+reconfigurable+2022
+   - Result: 404 error / not a valid search endpoint
+
+5. ASPLOS 2022 full proceedings reviewed via ACM DL (DOI: 10.1145/3503222):
+   - All 80+ papers enumerated from DBLP (https://dblp.org/db/conf/asplos/asplos2022.html)
+   - No paper with this title or closely matching title exists in the proceedings
+   - Session 1A (Accelerators), Session 4A (Systems for ML), and
+     Session 8A (Non-traditional Computing and Reconfigurable Hardware) all reviewed
+   - Closest relevant ASPLOS 2022 papers found:
+       * "A full-stack search technique for domain optimized deep learning accelerators"
+         DOI: 10.1145/3503222 (Session 1A)
+       * "AStitch: enabling a new multi-dimensional optimization space for
+         memory-intensive ML training and inference on modern SIMT architectures"
+         DOI: 10.1145/3503222.3507723 (Session 4A)
+       * "REVAMP: a systematic framework for heterogeneous CGRA realization"
+         DOI: 10.1145/3503222.3507772 (Session 8A)
+       * "OLLA: Optimizing the Lifetime and Location of Arrays to Reduce the
+         Memory Usage of Neural Networks" DOI: 10.1145/3503222.3507742
+
+6. Multiple web searches with exact title and keyword variants
+   - Result: No source confirms existence of a paper with this exact title
+
+Failure Reason:
+The paper "Memory-Efficient Deep Learning Acceleration via Reconfigurable Architecture"
+(ASPLOS 2022) does not appear to exist on arXiv, ACM DL, DBLP, or any other
+discoverable academic database under this exact title. The full ASPLOS 2022 proceedings
+(10.1145/3503222) were exhaustively reviewed and no matching paper was found.
+No arXiv ID or DOI could be found. No PDF was downloaded.
+
+Note: Title may be slightly different from an actual paper, or may be a fabricated
+reference. The adjacent paper slot (15_Sparse_NN_Reconfigurable_2021.txt) documents
+a similar search failure for a comparably titled 2021 paper.

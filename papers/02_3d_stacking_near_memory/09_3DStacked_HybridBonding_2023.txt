@@ -1,0 +1,28 @@
+论文信息 - 下载失败记录
+=======================
+
+标题（用户提供）：A 3D-Stacked DRAM-Logic Hybrid Bonding Architecture for AI Acceleration
+年份：2023
+
+注意：
+- 经过多轮搜索，未能找到此精确标题对应的实际论文
+- 该标题疑似为占位符/描述性标题，不对应具体发表的论文
+- 相关领域实际存在的代表性论文：
+  * "184QPS/W 64Mb/mm² 3D Logic-to-DRAM Hybrid Bonding with Process-Near-Memory Engine for Recommendation System" (ISSCC 2022)
+  * 各类 ISSCC/JSSC 2022-2023 关于 hybrid bonding PNM 架构的论文（如 Fengbin Tu 等人的工作）
+
+尝试过的链接/搜索：
+1. arXiv 搜索 "3D stacked hybrid bonding DRAM logic AI" — 无结果
+2. arXiv 搜索 "3D stacked DRAM logic hybrid bonding AI accelerator" — 无结果
+3. Semantic Scholar 搜索 "3D stacked DRAM logic hybrid bonding AI acceleration" — 搜索引擎报错
+4. Web 搜索 "A 3D-Stacked DRAM-Logic Hybrid Bonding Architecture for AI Acceleration" 2023 — 无精确匹配
+5. Web 搜索 IEEE 2023 3D-stacked DRAM logic hybrid bonding AI accelerator — 无精确匹配
+
+失败原因：
+- 该标题未能在任何学术数据库或搜索引擎中找到精确匹配的论文
+- 标题可能是对该研究领域方向的描述性概括，而非实际论文标题
+
+建议：
+- 确认论文的准确标题、作者、会议/期刊名称
+- 可参考 ISSCC 2022-2023、JSSC 2023 的 PNM/PIM 相关论文目录
+- 相关工作可搜索：Fengbin Tu, ISSCC 2022/2023, hybrid bonding, process-near-memory

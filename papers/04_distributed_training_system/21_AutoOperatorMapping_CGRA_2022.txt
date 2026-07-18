@@ -1,0 +1,26 @@
+Title: Automated Operator Mapping for CGRA-based AI Accelerators
+Year: 2022
+DOI: Not found
+arXiv ID: Not found
+
+Search Attempts:
+1. arXiv full-text search: https://arxiv.org/search/?searchtype=all&query=automated+operator+mapping+CGRA+AI+accelerator+2022
+   - Result: No matching paper found (multiple query variants tried)
+2. Semantic Scholar: https://www.semanticscholar.org/search?q=automated+operator+mapping+CGRA+accelerator&sort=Relevance
+   - Result: No matching paper found
+3. Google Scholar exact-title phrase search
+   - Result: Zero results for exact phrase "Automated Operator Mapping for CGRA-based AI Accelerators"
+4. Web search across dl.acm.org, ieeexplore.ieee.org, date-conference.com
+   - Result: No matching paper found
+
+Failure Reason:
+The paper "Automated Operator Mapping for CGRA-based AI Accelerators" (2022) does not appear to exist in any indexed academic database under this exact title. No arXiv ID or DOI could be found to attempt a download.
+
+Closest Related Papers Found (2022, on CGRA mapping):
+- "ChordMap: Automated Mapping of Streaming Applications onto CGRA" — IEEE TCAD 2022, DOI: 10.1109/TCAD.2021.3058313
+- "LISA: Graph Neural Network Based Portable Mapping on Spatial Accelerators" — HPCA 2022
+- "HiMap: Fast and Scalable High-Quality Mapping on CGRA via Hierarchical Abstraction" — IEEE TCAD 2022
+- "REVAMP: A Systematic Framework for Heterogeneous CGRA Realization" — ASPLOS 2022
+- "PathSeeker: A Fast Mapping Algorithm for CGRAs" — DATE 2022
+
+Note: The title may be slightly different or the paper may be unpublished/non-public conference work without an arXiv preprint.

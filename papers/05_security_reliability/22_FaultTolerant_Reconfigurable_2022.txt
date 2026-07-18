@@ -1,0 +1,46 @@
+论文下载失败记录
+==================
+
+标题：Fault-Tolerant Design for Reconfigurable AI Accelerators
+目标文件名：22_FaultTolerant_Reconfigurable_2022.pdf
+记录时间：2026-07-17
+
+尝试过的来源和链接
+------------------
+
+1. arXiv（全字段搜索）
+   - URL: https://arxiv.org/search/?searchtype=all&query=fault+tolerant+reconfigurable+AI+accelerator+2022
+   - 结果: 无匹配结果（0 results）
+
+2. arXiv（宽泛关键词）
+   - URL: https://arxiv.org/search/?searchtype=all&query=fault+tolerant+reconfigurable+accelerator+deep+learning
+   - 结果: 无匹配结果（0 results）
+
+3. Semantic Scholar 搜索界面
+   - URL: https://www.semanticscholar.org/search?q=fault+tolerant+reconfigurable+AI+accelerator+2022&sort=Relevance
+   - 结果: HTTP 400 错误（服务端拒绝请求）
+
+4. Semantic Scholar API
+   - URL: https://api.semanticscholar.org/graph/v1/paper/search?query=fault+tolerant+reconfigurable+AI+accelerator&fields=title,year,externalIds,openAccessPdf&limit=5
+   - 结果: 429 Too Many Requests（频率限制，无 API Key）
+
+5. Web 搜索（Google）
+   - 查询: "Fault-Tolerant Design" "Reconfigurable AI Accelerators" 2022 arxiv filetype:pdf
+   - 结果: 未找到精确匹配论文。相关但不完全匹配的论文包括：
+     * "FSA: An Efficient Fault-tolerant Systolic Array-based DNN Accelerator Architecture"
+       (Yingnan Zhao, Ke Wang, Ahmed Louri, IEEE ICCD 2022)
+       — 主题高度相关，但标题与目标不同，且未找到免费 PDF 直链
+
+失败原因
+--------
+该论文标题 "Fault-Tolerant Design for Reconfigurable AI Accelerators" 未在 arXiv、
+Semantic Scholar 及公开网络搜索中找到精确匹配。该标题可能：
+1. 为会议论文（如 DATE、DAC、ICCAD、ICCD）仅发布于 IEEE Xplore 付费平台
+2. 作者未将预印本上传至 arXiv
+3. 标题与实际发表标题有出入
+
+建议后续行动
+------------
+- 在 IEEE Xplore (https://ieeexplore.ieee.org) 中搜索完整标题
+- 在 Google Scholar 中搜索以定位 DOI 后联系作者获取预印本
+- 检查引用该论文的上游文献以确认准确标题和来源

@@ -1,0 +1,29 @@
+论文信息 - 下载失败记录
+=======================
+
+标题（用户提供）：Sub-Micron Interconnect Design for DRAM-Logic 3D Hybrid Bonding
+年份：2024
+
+注意：
+- 经过多轮搜索，未能找到此精确标题对应的实际论文
+- 该标题疑似为占位符/描述性标题，不对应具体发表的论文
+- 相关领域实际存在的代表性2024年论文：
+  * IEDM 2024 相关 hybrid bonding 论文（IBM 2.5μm pitch D2D bonding 等）
+  * 2024 Symposium on VLSI Technology 关于 3D DRAM hybrid bonding 的论文
+  * "A Systematic Study on Chip-to-Wafer Hybrid Bonding for Sub-3μm Pitches" (Shi et al., 2024)
+  * ECTC 2024 hybrid bonding 相关论文
+
+尝试过的链接/搜索：
+1. arXiv 搜索 "sub-micron interconnect DRAM logic hybrid bonding" — 无结果
+2. arXiv 搜索 "hybrid bonding DRAM logic interconnect sub-micron" — 无结果
+3. Web 搜索 "Sub-Micron Interconnect Design for DRAM-Logic 3D Hybrid Bonding" 2024 — 无精确匹配
+4. Web 搜索 IEEE IEDM 2024 hybrid bonding DRAM logic sub-micron interconnect — 无精确匹配
+
+失败原因：
+- 该标题未能在任何学术数据库或搜索引擎中找到精确匹配的论文
+- 标题可能是对该研究领域方向的描述性概括
+
+建议：
+- 确认论文的准确标题、作者、会议/期刊名称
+- 可参考 IEDM 2024、VLSI 2024、ECTC 2024 的 hybrid bonding 相关论文目录
+- 搜索关键词：chip-to-wafer bonding, sub-micron pitch, copper-copper interconnect, 3D DRAM
